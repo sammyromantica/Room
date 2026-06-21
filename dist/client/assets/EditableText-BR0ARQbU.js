@@ -1,0 +1,6 @@
+import{i as e}from"./chunk-aKtaBQYM.js";import{c as t,i as n,l as r}from"./index-p5nZ312Q.js";var i=e(r(),1),a=t();function o({value:e,onChange:t,as:r=`span`,className:o=``,multiline:s=!1,placeholder:c}){let{isAdmin:l}=n(),[u,d]=(0,i.useState)(!1),[f,p]=(0,i.useState)(e),m=(0,i.useRef)(null);if((0,i.useEffect)(()=>p(e),[e]),(0,i.useEffect)(()=>{u&&m.current?.focus()},[u]),!l)return(0,a.jsx)(r,{className:o,children:e.split(`
+`).map((t,n)=>(0,a.jsxs)(`span`,{children:[t,n<e.split(`
+`).length-1&&(0,a.jsx)(`br`,{})]},n))});if(u){let e=()=>{t(f),d(!1)};return s?(0,a.jsx)(`textarea`,{ref:m,value:f,onChange:e=>p(e.target.value),onBlur:e,placeholder:c,rows:Math.max(2,f.split(`
+`).length),className:`block w-full resize-y border-2 border-dashed border-strawberry bg-white px-1 ${o}`}):(0,a.jsx)(`input`,{ref:m,value:f,onChange:e=>p(e.target.value),onBlur:e,onKeyDown:t=>{t.key===`Enter`&&e()},placeholder:c,className:`border-2 border-dashed border-strawberry bg-white px-1 ${o}`})}return(0,a.jsx)(r,{className:`${o} cursor-text outline-2 outline-dashed outline-strawberry/0 hover:outline-strawberry/80`,onClick:()=>d(!0),title:`✎ click para editar`,children:e.split(`
+`).map((t,n)=>(0,a.jsxs)(`span`,{children:[t||`\xA0`,n<e.split(`
+`).length-1&&(0,a.jsx)(`br`,{})]},n))})}export{o as t};
