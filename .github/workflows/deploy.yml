@@ -20,14 +20,7 @@ jobs:
       - run: npm ci
       - run: npm run build
 
-      # Crear index.html si no existe en dist/client
-      - name: Ensure index.html exists
-        run: |
-          if [ ! -f dist/client/index.html ]; then
-            echo '<!DOCTYPE html><html><head><meta charset="UTF-8"><title>Sammy Room</title></head><body><div id="root"></div><script type="module" src="/Room/src/main.tsx"></script></body></html>' > dist/client/index.html
-          fi
-
       - uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./dist/client
+          publish_dir: ./dist/client   # <--- CRUCIAL: debe ser ./dist/client
