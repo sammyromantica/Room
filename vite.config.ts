@@ -10,7 +10,7 @@ export default defineConfig({
   plugins: [
     viteTsConfigPaths({ projects: ["./tsconfig.json"] }),
     tanstackStart({
-      server: false, // <--- Cambio clave: modo SPA
+      server: { entry: false }, // <--- Cambio clave
       importProtection: {
         behavior: "error",
         client: {
