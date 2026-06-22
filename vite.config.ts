@@ -11,7 +11,7 @@ export default defineConfig({
     viteTsConfigPaths({ projects: ["./tsconfig.json"] }),
     tanstackStart({
       ssr: false,
-      client: { entry: "./src/client.tsx" }, // <--- AGREGAR
+      static: true,  // <--- Esto genera el index.html estático
       importProtection: {
         behavior: "error",
         client: {
