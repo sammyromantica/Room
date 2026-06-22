@@ -6,11 +6,11 @@ import tailwindcss from "@tailwindcss/vite";
 import path from "path";
 
 export default defineConfig({
-  base: "/Room/", // <-- Agrega esta línea con el nombre de tu repositorio
+  base: "/Room/",
   plugins: [
     viteTsConfigPaths({ projects: ["./tsconfig.json"] }),
     tanstackStart({
-      server: { entry: "server" },
+      server: false, // <--- Cambio clave: modo SPA
       importProtection: {
         behavior: "error",
         client: {
@@ -38,5 +38,20 @@ export default defineConfig({
   optimizeDeps: {
     include: ["react", "react-dom", "react-dom/client", "react/jsx-runtime", "react/jsx-dev-runtime"],
     ignoreOutdatedRequests: true,
+  },
+  build: {
+    rollupOptions: {
+      output: {
+        generatedCode: {
+          constBindings: true,
+          arrowFunctions: true,
+        },
+      },
+    },
+  },
+  esbuild: {
+    minifyIdentifiers: false,
+    minifySyntax: false,
+    minifyWhitespace: false,
   },
 });
