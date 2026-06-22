@@ -1,9 +1,10 @@
+// copy-index.cjs
 const fs = require('fs');
 const path = require('path');
 
 const assetsDir = path.join(__dirname, 'dist', 'client', 'assets');
 const templatePath = path.join(__dirname, 'index.template.html');
-const indexPath = path.join(__dirname, 'dist', 'client', 'index.html');
+const clientDir = path.join(__dirname, 'dist', 'client');
 
 // Buscar archivos CSS y JS principales
 let cssFile = '';
@@ -26,6 +27,17 @@ const html = template
   .replace(/\{\{CSS\}\}/g, cssFile)
   .replace(/\{\{JS\}\}/g, jsFile);
 
+// Asegurar que la carpeta dist/client existe
+if (!fs.existsSync(clientDir)) {
+  fs.mkdirSync(clientDir, { recursive: true });
+}
+
 // Escribir index.html
+const indexPath = path.join(clientDir, 'index.html');
 fs.writeFileSync(indexPath, html);
 console.log(`✅ index.html generado con CSS: ${cssFile} y JS: ${jsFile}`);
+
+// --- NUEVO: Crear 404.html como copia de index.html ---
+const notFoundPath = path.join(clientDir, '404.html');
+fs.copyFileSync(indexPath, notFoundPath);
+console.log(`✅ 404.html generado como copia de index.html`);
