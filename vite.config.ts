@@ -10,7 +10,8 @@ export default defineConfig({
   plugins: [
     viteTsConfigPaths({ projects: ["./tsconfig.json"] }),
     tanstackStart({
-      ssr: false, // <--- Esto deshabilita el SSR y genera una SPA estática
+      ssr: false,
+      client: { entry: "./src/client.tsx" }, // <--- AGREGAR
       importProtection: {
         behavior: "error",
         client: {
