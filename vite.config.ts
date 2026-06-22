@@ -10,7 +10,7 @@ export default defineConfig({
   plugins: [
     viteTsConfigPaths({ projects: ["./tsconfig.json"] }),
     tanstackStart({
-      server: { entry: false }, // <--- Cambio clave
+      ssr: false, // <--- Esto deshabilita el SSR y genera una SPA estática
       importProtection: {
         behavior: "error",
         client: {
